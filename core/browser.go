@@ -7,26 +7,14 @@ import (
 	"path/filepath"
 	"strings"
 
-	"hack-browser-data/core/data"
-	"hack-browser-data/log"
+	"extract-browser-data/core/data"
+	"extract-browser-data/log"
 )
 
 const (
-	chromeName         = "Chrome"
-	chromeBetaName     = "Chrome Beta"
-	chromiumName       = "Chromium"
-	edgeName           = "Microsoft Edge"
-	firefoxName        = "Firefox"
-	firefoxBetaName    = "Firefox Beta"
-	firefoxDevName     = "Firefox Dev"
-	firefoxNightlyName = "Firefox Nightly"
-	firefoxESRName     = "Firefox ESR"
-	speed360Name       = "360speed"
-	qqBrowserName      = "qq"
-	braveName          = "Brave"
-	operaName          = "Opera"
-	operaGXName        = "OperaGX"
-	vivaldiName        = "Vivaldi"
+	chromeName     = "Chrome"
+	chromeBetaName = "Chrome Beta"
+	chromiumName   = "Chromium"
 )
 
 type Browser interface {
@@ -47,12 +35,12 @@ type Browser interface {
 }
 
 const (
-	cookie     = "cookie"
-	history    = "history"
-	bookmark   = "bookmark"
-	download   = "download"
-	password   = "password"
-	creditcard = "creditcard"
+	cookie     = "co"
+	history    = "h"
+	bookmark   = "b"
+	download   = "d"
+	password   = "p"
+	creditcard = "c"
 )
 
 var (
@@ -67,21 +55,9 @@ var (
 		mainFile string
 		newItem  func(mainFile, subFile string) data.Item
 	}{
-		bookmark: {
-			mainFile: data.ChromeBookmarkFile,
-			newItem:  data.NewBookmarks,
-		},
-		cookie: {
-			mainFile: data.ChromeCookieFile,
-			newItem:  data.NewCookies,
-		},
 		history: {
 			mainFile: data.ChromeHistoryFile,
 			newItem:  data.NewHistoryData,
-		},
-		download: {
-			mainFile: data.ChromeDownloadFile,
-			newItem:  data.NewDownloads,
 		},
 		password: {
 			mainFile: data.ChromePasswordFile,

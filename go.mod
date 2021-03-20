@@ -1,4 +1,4 @@
-module hack-browser-data
+module extract-browser-data
 
 go 1.14
 
